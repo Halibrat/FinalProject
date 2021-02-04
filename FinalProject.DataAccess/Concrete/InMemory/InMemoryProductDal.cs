@@ -3,6 +3,7 @@ using FinalProject.Entities.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 
 namespace FinalProject.DataAccess.Concrete.InMemory
@@ -31,9 +32,19 @@ namespace FinalProject.DataAccess.Concrete.InMemory
             _products.Remove(productToDelete);
         }
 
+        public List<Product> Get(Expression<Func<Product, bool>> filter)
+        {
+            throw new NotImplementedException();
+        }
+
         public List<Product> GetAll()
         {
             return _products;
+        }
+
+        public List<Product> GetAll(Expression<Func<Product, bool>> filter = null)
+        {
+            throw new NotImplementedException();
         }
 
         public List<Product> GetAllByCategory(int categoryId)
@@ -48,6 +59,11 @@ namespace FinalProject.DataAccess.Concrete.InMemory
             productToUpdate.CategoryId = product.CategoryId;
             productToUpdate.UnitPrice = productToUpdate.UnitPrice;
             productToUpdate.UnitsInStock = productToUpdate.UnitsInStock;
+        }
+
+        Product IEntityRepository<Product>.Get(Expression<Func<Product, bool>> filter)
+        {
+            throw new NotImplementedException();
         }
     }
 }
