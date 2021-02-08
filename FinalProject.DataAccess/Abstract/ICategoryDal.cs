@@ -1,4 +1,5 @@
-﻿using FinalProject.Entities.Concrete;
+﻿using Core.DataAccess;
+using FinalProject.Entities.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Text;
