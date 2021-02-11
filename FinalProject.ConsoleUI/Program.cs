@@ -28,9 +28,9 @@ namespace FinalProject.ConsoleUI
         {
             ProductManager productManager = new ProductManager(new EfProductDal());
             var result = productManager.GetProductDetails();
-            if (result.Success==true)
+            if (result.Success==true)//GetProductDetails i yukarıda var result değişkenininiçine attık çünkü if yapımızda uzun uzun productManager.GetProductDetails() yazmak istemediğimiz için.Bununla beraber result.Success==true dememizin sebebi sisteme erişimin açık olup olmadığını kontrol etmek için.Açıksa foreach inm içine giriyor listemizi veriyor.Değilse Messages da yazdığımız ProductManagerde GetProductDetails'e atadığımız mesajı döndürüyor. 
             {
-                foreach (var product in productManager.GetProductDetails().Data)
+                foreach (var product in productManager.GetProductDetails().Data)//GetProductDetail'ın artık Datası.Mesajı ve Successi olduğu için sonuna Datamızı getirmek istediğimiz içib Data dedik.
                 {
                     Console.WriteLine(product.ProductName + "/" + product.CategoryName);
 
