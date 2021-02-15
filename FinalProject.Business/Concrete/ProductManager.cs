@@ -37,8 +37,8 @@ namespace FinalProject.Business.Concrete
             {
                 return new ErrorDataResult<List<Product>>(Messages.MaintemanceTime);
             }
-           
-           return new SuccessDataResult<List<Product>>( _productDal.GetAll(),Messages.ProductsListed);
+
+            return new SuccessDataResult<List<Product>>( _productDal.GetAll(),Messages.ProductsListed);
             
         }
 
