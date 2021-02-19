@@ -1,11 +1,15 @@
-﻿using Core.Utilities;
+﻿using Core.Aspect.Autofac.Validation;
+using Core.CrossCuttingCorcerns.Validation;
+using Core.Utilities;
 using Core.Utilities.Resluts;
 using Core.Utilities.Results;
 using FinalProject.Business.Abstract;
 using FinalProject.Business.Constans;
+using FinalProject.Business.ValidationRules.FluentValidation;
 using FinalProject.DataAccess.Abstract;
 using FinalProject.Entities.Concrete;
 using FinalProject.Entities.DTOs;
+using FluentValidation;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -20,13 +24,10 @@ namespace FinalProject.Business.Concrete
         {
             _productDal = productDal;
         }
-
+        [ValidationAspect(typeof(ProductValidator))]
         public IResult Add(Product product)
         {
-            if (product.ProductName.Length<2)
-            {
-                return new ErrorResult(Messages.ProductNameInvalid);
-            }
+           // ValidationTool.Validate(new ProductValidator(), product); Aspect yapımız sayesinde artık bunu değil yukaridaki Attirubute yi kullanıyoruz.
              _productDal.Add(product);
             return new SuccessResult(Messages.ProductAdded);
         }

@@ -30,8 +30,8 @@ namespace FinalProject.WebAPI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddSingleton<IProductService,ProductManager>();//burasý
-            services.AddSingleton<IProductDal, EfProductDal>();//burasý
+            //services.AddSingleton<IProductService,ProductManager>();//burasý
+            //services.AddSingleton<IProductDal, EfProductDal>();//burasý
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
