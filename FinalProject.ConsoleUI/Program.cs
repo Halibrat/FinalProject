@@ -18,7 +18,7 @@ namespace FinalProject.ConsoleUI
         private static void CategoryTest()
         {
             CategoryManager categoryManager = new CategoryManager(new EfCategoryDal());
-            foreach (var category in categoryManager.GetAll())
+            foreach (var category in categoryManager.GetAll().Data)
             {
                 Console.WriteLine(category.CategoryName);
             }
@@ -26,7 +26,7 @@ namespace FinalProject.ConsoleUI
 
         private static void ProductTest()
         {
-            ProductManager productManager = new ProductManager(new EfProductDal());
+            ProductManager productManager = new ProductManager(new EfProductDal(),new CategoryManager(new EfCategoryDal()));
             var result = productManager.GetProductDetails();
             if (result.Success==true)//GetProductDetails i yukarıda var result değişkenininiçine attık çünkü if yapımızda uzun uzun productManager.GetProductDetails() yazmak istemediğimiz için.Bununla beraber result.Success==true dememizin sebebi sisteme erişimin açık olup olmadığını kontrol etmek için.Açıksa foreach inm içine giriyor listemizi veriyor.Değilse Messages da yazdığımız ProductManagerde GetProductDetails'e atadığımız mesajı döndürüyor. 
             {

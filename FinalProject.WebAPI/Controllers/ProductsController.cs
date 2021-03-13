@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using FinalProject.Business.Abstract;
 using FinalProject.Business.Concrete;
@@ -23,6 +24,7 @@ namespace FinalProject.WebAPI.Controllers
         [HttpGet("getall")]
         public IActionResult GetAll()
         {
+            Thread.Sleep(6000);
            
               var result= _productService.GetAll();
             if (result.Success)

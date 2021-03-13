@@ -16,5 +16,6 @@ namespace FinalProject.Business.Abstract
         IDataResult<List<ProductDetailDto>> GetProductDetails();    
         IResult Add(Product product);//IResult' buraya olan katkısı ekleme işlemi ile beraber işlem sonucu ve mesajda döndürmesidir.
         IDataResult<Product> GetById(int productId);
+        IResult AddTransactionalTest(Product product);
     }
 }

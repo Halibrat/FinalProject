@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Core.Utilities.Resluts
+namespace Core.Utilities.Resluts 
 {
    public interface IResult //Teemel voidler için başlangic.Voidleri IResult yapısıyla süsleyeceğiz.
     {

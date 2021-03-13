@@ -1,11 +1,14 @@
 ﻿using Autofac;
 using Autofac.Extras.DynamicProxy;
 using Castle.DynamicProxy;
+using Core.CCS;
 using Core.Utilities.Interceptors;
+using Core.Utilities.Security.JWT;
 using FinalProject.Business.Abstract;
 using FinalProject.Business.Concrete;
 using FinalProject.DataAccess.Abstract;
 using FinalProject.DataAccess.Concrete.EntityFramework;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -22,6 +25,16 @@ namespace FinalProject.Business.DependencyResolvers.Autofac
 
             builder.RegisterType<ProductManager>().As<IProductService>().SingleInstance();
             builder.RegisterType<EfProductDal>().As<IProductDal>().SingleInstance();
+            builder.RegisterType<CategoryManager>().As<ICategoryService>().SingleInstance();
+            builder.RegisterType<EfCategoryDal>().As<ICategoryDal>().SingleInstance();
+            builder.RegisterType<UserManager>().As<IUserService>();
+            builder.RegisterType<EfUserDal>().As<IUserDal>();
+
+            builder.RegisterType<AuthManager>().As<IAuthService>();
+            builder.RegisterType<JwtHelper>().As<ITokenHelper>();
+
+            builder.RegisterType<HttpContextAccessor>().As<IHttpContextAccessor>();
+
             //Yukarıda yaptığımız işlem biri senden IProductService isterse ona ProductManager inctance i ver.IProductDal isterse EfProduct inctance i ver.SıngleIntance() ise tekbir inctance olustur herkes onu kullansın demek.
             //Burdan WEbAPI içinde ki program.cs gidiyoruz.
 
